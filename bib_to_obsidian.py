@@ -91,7 +91,7 @@ def create_literature_note_from_entry(entry: dict, output_dir: str):
 
     # --- Write to File ---
     sanitized_title = sanitize_filename(title)
-    file_name = f"{sanitized_title} ({bib_key}).md"
+    file_name = f"@{sanitized_title} ({bib_key}).md"
     output_path = os.path.join(output_dir, file_name)
     
     try:
