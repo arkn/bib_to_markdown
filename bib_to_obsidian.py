@@ -47,6 +47,7 @@ def create_literature_note_from_entry(entry: dict, output_dir: str):
     url = entry.get('url', '')
     year = entry.get('year', '') or entry.get('date', 'n.d.').split('-')[0]
     tags = format_tags(entry.get('keywords', ''))
+    tags.append('paper')
     
     # --- Author and Abstract Cleaning ---
     author_list = parse_authors(entry.get('author', ''))
@@ -79,10 +80,9 @@ def create_literature_note_from_entry(entry: dict, output_dir: str):
     if journal: md_content += f"- **Journal**: {journal}\n"
     if year and year != 'n.d.': md_content += f"- **Year**: {year}\n"
     
-    md_content += "\n## TL;DR\n\n> Add a one-sentence summary here.\n\n"
+    md_content += "## ✍️ My Notes\n\n> Add your personal notes and thoughts here.\n\n\n"
     # Use the cleaned abstract
     md_content += f"## Abstract\n{abstract or 'No abstract available.'}\n\n"
-    md_content += "## ✍️ My Notes\n\n> Add your personal notes and thoughts here.\n\n\n"
     md_content += "## 📚 BibTeX\n```bibtex\n"
     
     single_entry_db = bibtexparser.bibdatabase.BibDatabase()
